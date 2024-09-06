@@ -2,26 +2,36 @@ from abc import ABC, abstractmethod
 
 class Supporter(ABC):
     @abstractmethod
-    def give_rewards(self):
+    def support(self):
         pass
 
-class MonetarySupporter(Supporter):
-    def give_rewards(self):
-        print("Giving rewards as financial support through donations or subscriptions.")
+class Donor(Supporter):
+    def __init__(self,name,amount):
+        self.name = name
+        self.amount = amount
+    def support(self):
+        print(f"{self.name} has donated {self.amount} $ towards the project")
 
-class MerchandiseSupporter(Supporter):
-    def give_rewards(self):
-        print("Giving rewards through the purchase of branded merchandise.")
+class Subscriber(Supporter):
+    def __init__(self,name,months):
+        self.name = name
+        self.months = months
+    def support(self):
+        print(f"{self.name} has subscribed for {self.months} months")
 
-class ExclusiveContentSupporter(Supporter):
-    def give_rewards(self):
-        print("Giving rewards by accessing exclusive content for subscribers.")
+class Funder(Supporter):
+    def __init__(self,name,funds):
+        self.name = name
+        self.funds = funds
+    def support(self):
+        print(f"{self.name} has funded the project with {self.funds} $")
+    
 
-supporters = [
-    MonetarySupporter(),
-    MerchandiseSupporter(),
-    ExclusiveContentSupporter()
-]
+_donor = Donor(name = "Sam",amount=40)
+_subscriber = Subscriber(name = "Jeff",months=5)
+_funder = Funder(name = "Charlie", funds=5000)
 
-for supporter in supporters:
-    supporter.give_rewards()
+supporter_all = [_donor, _subscriber, _funder]
+
+for _supporter in supporter_all:
+    _supporter.support() 
