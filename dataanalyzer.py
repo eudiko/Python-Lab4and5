@@ -14,7 +14,7 @@ class TextDataAnalyzer(DataAnalyzer):
             if not isinstance(data, str):
                 raise TypeError("Data must be of type str for text analysis.")
 
-            word_count = len(data.split())
+            word_count = len(data)
             print(f"Text analysis complete. Word count: {word_count}")
         
         except TypeError as e:
